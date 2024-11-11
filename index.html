@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- META INFO -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-79547588-18"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-79547588-18');
+    </script>
+
+    <!-- PAGE TITLE -->
+    <title>Phantom</title>
+
+    <!-- META VIEW PORT -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+<style>
+/* This is an example, feel free to delete this code */
+.tooltip-container {
+  position: relative;
+  background-color: #ff3cac;
+  background-image: linear-gradient(
+    225deg,
+    #ff3cac 0%,
+    #784ba0 50%,
+    #2b86c5 100%
+  );
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 17px;
+  /*padding: 0.7em 1.8em;*/
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  fill: #fff;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 25px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+.tooltip-container .borde-back {
+  width: 60px;
+  height: 60px;
+  background-color: #232428;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  box-shadow: none;
+}
+
+.tooltip-container .icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  background-color: #5865f2;
+  cursor: pointer;
+}
+
+.tooltip {
+  position: absolute;
+  top: -2;
+  left: -45px; /* Altere a posição inicial para a esquerda, fora da tela */
+  transform: translateX(
+    -32%
+  ); /* Usando translateX para controlar a transição da esquerda para a direita */
+  width: 160px;
+  height: 52px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.6s;
+  border-radius: 50px;
+  background-color: #5865f2;
+  background-image: linear-gradient(
+    -90deg,
+    #ff73fa 0%,
+    #5865f2 75%,
+    #5865f2 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  padding-right: 16px;
+  color: #fff;
+  font-size: 18px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+}
+
+.tooltip::before {
+  position: absolute;
+  content: "";
+  height: 0.6em;
+  width: 0.6em;
+  right: -0.2em; /* Mude para a direita */
+  top: 50%; /* Altere o topo para o meio da tooltip */
+  transform: translateY(-50%) rotate(45deg); /* Use translateY para centralizar verticalmente */
+  background: var(--background);
+}
+
+.tooltip-container:hover .tooltip {
+  left: 100%; /* Altere para a posição desejada (a direita) */
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  z-index: -10;
+}
+.tooltip-container:hover {
+  transform: translateX(-50px);
+  transition: 0.5s linear;
+}
+
+  </style>
+
+  <style>
+    .btn-donate {
+      --clr-font-main: hsla(0 0% 20% / 100);
+      --btn-bg-1: hsla(194 100% 69% / 1);
+      --btn-bg-2: hsla(217 100% 56% / 1);
+      --btn-bg-color: hsla(360 100% 100% / 1);
+      --radii: 0.5em;
+      cursor: pointer;
+      padding: 0.9em 1.4em;
+      min-width: 120px;
+      min-height: 44px;
+      font-size: var(--size, 1rem);
+      font-weight: 500;
+      transition: 0.8s;
+      background-size: 280% auto;
+      background-image: linear-gradient(
+        325deg,
+        var(--btn-bg-2) 0%,
+        var(--btn-bg-1) 55%,
+        var(--btn-bg-2) 90%
+      );
+      border: none;
+      border-radius: var(--radii);
+      color: var(--btn-bg-color);
+      box-shadow:
+        0px 0px 20px rgba(71, 184, 255, 0.5),
+        0px 5px 5px -1px rgba(58, 125, 233, 0.25),
+        inset 4px 4px 8px rgba(175, 230, 255, 0.5),
+        inset -4px -4px 8px rgba(19, 95, 216, 0.35);
+    }
+
+    .btn-donate:hover {
+      background-position: right top;
+    }
+
+    .btn-donate:is(:focus, :focus-visible, :active) {
+      outline: none;
+      box-shadow:
+        0 0 0 3px var(--btn-bg-color),
+        0 0 0 6px var(--btn-bg-2);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .btn-donate {
+        transition: linear;
+      }
+    }
+  </style>
+
+    <!-- FAVICONS -->
+    <link rel="icon" href="https://cdn.discordapp.com/attachments/1285740221039640628/1305631728249081937/d41da5a960bd4684cc57a28619b1a9fc.jpg?ex=6733bbcd&is=67326a4d&hm=8744fe6b001d9a8358a66af6d5d1a59df4d1514ca3cf559435019a43660dd920&">
+    <!-- WEB FONT-FAMILY -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&amp;display=swap"
+        rel="stylesheet">
+
+    <!-- VENDOR FONT ICONS CSS -->
+    <link rel="stylesheet" href="siteassets/fonticons/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="siteassets/fonticons/et-line/et-line-font.css">
+    <link rel="stylesheet" href="siteassets/fonticons/material-webfont/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="siteassets/fonticons/pixeden/pe-icon-7-stroke.css">
+    <link rel="stylesheet" href="siteassets/fonticons/simplelineicons/css/simple-line-icons.css">
+
+    <!-- COMMON VENDOR CSS -->
+    <link rel="stylesheet" href="siteassets/vendor/animate-css/animate.min.css">
+    <link rel="stylesheet" href="siteassets/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="siteassets/vendor/sweetalert/sweetalert2.min.css">
+    <link rel="stylesheet" href="siteassets/vendor/jarallax/jarallax.css">
+    <link rel="stylesheet" href="siteassets/vendor/owlcarousel/owl.carousel.min.css">
+    <link rel="stylesheet" href="siteassets/vendor/magnific-popup/magnific-popup.css">
+
+
+    <link rel="stylesheet" href="siteassets/minify/ckav_min.css">
+
+
+    <link rel="stylesheet" href="siteassets/css/template-custom.css">
+
+    <style>
+        #video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body class="ckav-body tooltip-light">
+    <body class="ckav-body tooltip-light">
+        <div id="video-container">
+            <iframe width="1280" height="720" 
+                    style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; transform: scale(1.1); transform-origin: 0 0;" 
+                    src="https://www.youtube.com/embed/5Ywki_d3Ovg?autoplay=1&controls=0&loop=1&mute=1&playlist=5Ywki_d3Ovg&start=50&modestbranding=1&rel=0" 
+                    title="Black Screen Lightning Effect l Free Thunder & Lighting Effects Black Screen l #freedownload" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    referrerpolicy="strict-origin-when-cross-origin" 
+                    allowfullscreen>
+            </iframe>
+        </div>
+        <div id="loader">
+            <div class="load-three-bounce">
+                <div class="load-child bounce1"></div>
+                <div class="load-child bounce2"></div>
+                <div class="load-child bounce3"></div>
+            </div>
+        </div>
+    </body>
+    
+    
+    
+
+
+
+    <div class="ckav-body">
+        <header class="ckav-header">
+            <div class="container-fluid padding-0">
+
+                <div class="row align-items-center">
+
+                    <!-- LOGO -->
+                    <div class="col">
+                        <a href="#" class="logo-wrapper margin-l-30 margin-t-30"
+                            data-ckav-smd="margin-t-10 margin-l-10 margin-b-10 width-px-60">
+                            <img src="https://cdn.discordapp.com/attachments/1285740221039640628/1305631728249081937/d41da5a960bd4684cc57a28619b1a9fc.jpg?ex=6733bbcd&is=67326a4d&hm=8744fe6b001d9a8358a66af6d5d1a59df4d1514ca3cf559435019a43660dd920&" alt="ckav">
+                        </a>
+                    </div>
+
+                    <!-- SOCIAL LINKS -->
+                    <div class="col flex-cr">
+
+                        <!-- MENU ICON -->
+                        <div class="menu-icon-wrp display-none" data-ckav-smd="display-flex margin-r-10">
+                            <div class="menu-icon">
+                                <div class="bar"></div>
+                            </div>
+                        </div>
+
+                        <!-- SOCIAL ICONS -->
+                        <div class="social-section margin-r-30 margin-t-30" data-ckav-smd="display-none">
+                            <div class="inner-wrapper">
+                                <!-- Wrap the entire container with an <a> tag to make it a clickable link -->
+                                <a href="https://dsc.gg/phantomtools" class="tooltip-container-link">
+                                        <div class="tooltip-container">
+                                      <span class="tooltip">Discover</span>
+                                      <span class="text">
+                                        <div class="borde-back">
+                                          <div class="icon">
+                                            <svg
+                                              xmlns="http://www.w3.org/2000/svg"
+                                              width="23"
+                                              height="23"
+                                              class="bi bi-discord"
+                                              viewBox="0 0 16 16"
+                                            >
+                                              <path
+                                                d="M13.545 2.907a13.227 13.227 0 0 0-3.257-1.011.05.05 0 0 0-.052.025c-.141.25-.297.577-.406.833a12.19 12.19 0 0 0-3.658 0 8.258 8.258 0 0 0-.412-.833.051.051 0 0 0-.052-.025c-1.125.194-2.22.534-3.257 1.011a.041.041 0 0 0-.021.018C.356 6.024-.213 9.047.066 12.032c.001.014.01.028.021.037a13.276 13.276 0 0 0 3.995 2.02.05.05 0 0 0 .056-.019c.308-.42.582-.863.818-1.329a.05.05 0 0 0-.01-.059.051.051 0 0 0-.018-.011 8.875 8.875 0 0 1-1.248-.595.05.05 0 0 1-.02-.066.051.051 0 0 1 .015-.019c.084-.063.168-.129.248-.195a.05.05 0 0 1 .051-.007c2.619 1.196 5.454 1.196 8.041 0a.052.052 0 0 1 .053.007c.08.066.164.132.248.195a.051.051 0 0 1-.004.085 8.254 8.254 0 0 1-1.249.594.05.05 0 0 0-.03.03.052.052 0 0 0 .003.041c.24.465.515.909.817 1.329a.05.05 0 0 0 .056.019 13.235 13.235 0 0 0 4.001-2.02.049.049 0 0 0 .021-.037c.334-3.451-.559-6.449-2.366-9.106a.034.034 0 0 0-.02-.019Zm-8.198 7.307c-.789 0-1.438-.724-1.438-1.612 0-.889.637-1.613 1.438-1.613.807 0 1.45.73 1.438 1.613 0 .888-.637 1.612-1.438 1.612Zm5.316 0c-.788 0-1.438-.724-1.438-1.612 0-.889.637-1.613 1.438-1.613.807 0 1.451.73 1.438 1.613 0 .888-.631 1.612-1.438 1.612Z"
+                                              ></path>
+                                                </svg>
+                                          </div>
+                                        </div>
+                                      </span>
+                                    </div>
+                                  </a>
+  
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </header>
+        <!-- ************** END : HEADER **************  -->
+
+        <!--
+        ************************************************************
+        * INTRO SECTION
+        *************************************************************
+        -->
+        <div class="intro-section flex-cc">
+
+            <!-- PARTICLE EFFECT -->
+            <div class="full-wh full-wh zindex-1">
+                <div id="particles-js"></div>
+            </div>
+
+            <div class="container zindex-2 typo-light">
+                <div class="intro-text width-40" data-ckav-smd="width-100 align-center">
+                    <h2 class="heading xlarge bold-600 margin-b-25" data-ckav-smd="large">Phantom</h2>
+                    <p class="heading-sub mini bold-300 margin-b-40" data-ckav-smd="mini margin-b-40">Welcome to the
+                        future of gaming augmentation and enhancements! The industries best and most advance software to
+                        give you easily the most intense and awarding gaming experience you could only ever have dreamed
+                        of for FREE, only here at Phantom!</p>
+                    <button class="btn-donate" onclick="window.location.href='https://dsc.gg/phantomtools'">Discord</button>
+
+                </div>
+
+            </div>
+
+            <!--=================================
+            = BACKGROUND HOLDER
+            ==================================-->
+            <div class="bg-holder zindex-0">
+
+                <!-- OVERLAY -->
+                <b data-bgholder="overlay" class="full-wh zindex-2"
+                    data-radial-gradient="rgba(0,0,0, 0)|rgba(208,9,0, 0.0)"></b>
+
+            </div>
+            <!-- ======= END : BACKGROUND HOLDER =======  -->
+
+        </div>
+        <!-- ************** END : INTRO SECTION **************  -->
+
+        <!--
+        ************************************************************
+        * NAVIGATION
+        *************************************************************
+        -->
+        <div class="navigation-section" data-linear-gradient="rgba(0,0,0, 0)|rgba(0,0,0, 0.8)">
+            <div class="container">
+                <ul class="navigation-ul row gt0 align-items-center">
+                    <li class="navigation-li col">
+                        <a class="navigation-a" data-popup="#services" href="#">
+                            <span class="icon"><i class="icon-settings"></i></span>
+                            <span class="text">Services</span>
+                            <span class="line"></span>
+                        </a>
+                    </li>
+                    <li class="navigation-li col">
+                        <a class="navigation-a" data-popup="#contact" href="#">
+                            <span class="icon"><i class="icon-envelope-letter"></i></span>
+                            <span class="text">Contact</span>
+                            <span class="line"></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- ************** END : NAVIGATION **************  -->
+
+
+        <!--
+        ************************************************************
+        * SERVICES SECTION
+        *************************************************************
+        -->
+        <div id="services" class="popup-section services-section flex-cc">
+            <div class="inner-wrapper" data-ckav-smd="align-center">
+
+                <!-- CLOSE BUTTON -->
+                <div class="popup-close button button-icon color-button-dark solid color-hov-button-dark">
+                    <i class="pe-7s-close"></i>
+                </div>
+
+                <!-- POPUP HEADER -->
+                <div class="header-area typo-light">
+                    <h2 class="heading-section medium bold-600 margin-b-0">Services</h2>
+                </div>
+
+                <!-- POPUP CONTENT -->
+                <div class="content-area">
+
+                    <div class="width-50 align-center margin-auto margin-b-40" data-ckav-smd="width-100">
+                        <h3 class="heading-content small bold-600">What we offer?</h3>
+
+                        <p class="heading-content-sub bold-400 tiny">Unleashing the Ultimate Power of Cheating</p>
+                    </div>
+                    <div class="row gt30 margin-b-30">
+                        <div class="col-lg-4" data-ckav-smd="margin-b-30">
+                            <div class="info-obj radius-10 margin-b-0 center info-box-01 img-t padding-30 gap-20 mini"
+                                data-bg-color="rgba(0,0,0,0.03)">
+                                <div class="img"><span class="iconwrp"><i class="fa fa-lock"></i></span></div>
+                                <div class="info">
+                                    <h3 class="heading-content bold-600 tiny">Privacy First</h3>
+                                    <p class="margin-b-0">We prioritize your needs, your users, and the sanctity of your
+                                        data.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4" data-ckav-smd="margin-b-30">
+                            <div class="info-obj radius-10 margin-b-0 center info-box-01 img-t padding-30 gap-20 mini"
+                                data-bg-color="rgba(0,0,0,0.03)">
+                                <div class="img"><span class="iconwrp"><i class="fa fa-check"></i></span></div>
+                                <div class="info">
+                                    <h3 class="heading-content bold-600 tiny">Up to date</h3>
+                                    <p class="margin-b-0">Our products are always up to date, and easy to use.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="info-obj radius-10 margin-b-0 center info-box-01 img-t padding-30 gap-20 mini"
+                                data-bg-color="rgba(0,0,0,0.03)">
+                                <div class="img"><span class="iconwrp"><i class="fa fa-question-circle"></i></span></div>
+                                <div class="info">
+                                    <h3 class="heading-content bold-600 tiny">Having trouble?</h3>
+                                    <p class="margin-b-0">Our support will guide you to fix your problems almost 24/7</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <!-- ************** END : SERVICES SECTION **************  -->
+
+        <!--
+        ************************************************************
+        * CONTACT SECTION
+        *************************************************************
+        -->
+        <div id="contact" class="popup-section contact-section flex-cc">
+            <div class="inner-wrapper" data-ckav-smd="align-center">
+
+                <!-- CLOSE BUTTON -->
+                <div class="popup-close button button-icon color-button-dark solid color-hov-button-dark">
+                    <i class="pe-7s-close"></i>
+                </div>
+
+                <!-- POPUP HEADER -->
+                <div class="header-area typo-light">
+                    <h2 class="heading-section medium bold-600 margin-b-0">Contact</h2>
+                </div>
+
+                <!-- POPUP CONTENT -->
+                <div class="content-area">
+<!-- Wrap the entire container with an <a> tag to make it a clickable link -->
+                    <a href="https://dsc.gg/phantomtools" class="tooltip-container-link">
+                        <div class="tooltip-container">
+                          <span class="tooltip">Discover</span>
+                          <span class="text">
+                            <div class="borde-back">
+                              <div class="icon">
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="23"
+                                  height="23"
+                                  class="bi bi-discord"
+                                  viewBox="0 0 16 16"
+                                >
+                                  <path
+                                    d="M13.545 2.907a13.227 13.227 0 0 0-3.257-1.011.05.05 0 0 0-.052.025c-.141.25-.297.577-.406.833a12.19 12.19 0 0 0-3.658 0 8.258 8.258 0 0 0-.412-.833.051.051 0 0 0-.052-.025c-1.125.194-2.22.534-3.257 1.011a.041.041 0 0 0-.021.018C.356 6.024-.213 9.047.066 12.032c.001.014.01.028.021.037a13.276 13.276 0 0 0 3.995 2.02.05.05 0 0 0 .056-.019c.308-.42.582-.863.818-1.329a.05.05 0 0 0-.01-.059.051.051 0 0 0-.018-.011 8.875 8.875 0 0 1-1.248-.595.05.05 0 0 1-.02-.066.051.051 0 0 1 .015-.019c.084-.063.168-.129.248-.195a.05.05 0 0 1 .051-.007c2.619 1.196 5.454 1.196 8.041 0a.052.052 0 0 1 .053.007c.08.066.164.132.248.195a.051.051 0 0 1-.004.085 8.254 8.254 0 0 1-1.249.594.05.05 0 0 0-.03.03.052.052 0 0 0 .003.041c.24.465.515.909.817 1.329a.05.05 0 0 0 .056.019 13.235 13.235 0 0 0 4.001-2.02.049.049 0 0 0 .021-.037c.334-3.451-.559-6.449-2.366-9.106a.034.034 0 0 0-.02-.019Zm-8.198 7.307c-.789 0-1.438-.724-1.438-1.612 0-.889.637-1.613 1.438-1.613.807 0 1.45.73 1.438 1.613 0 .888-.637 1.612-1.438 1.612Zm5.316 0c-.788 0-1.438-.724-1.438-1.612 0-.889.637-1.613 1.438-1.613.807 0 1.451.73 1.438 1.613 0 .888-.631 1.612-1.438 1.612Z"
+                                  ></path>
+                                </svg>
+                              </div>
+                            </div>
+                          </span>
+                        </div>
+                      </a>
+      
+                </div>
+
+            </div>
+        </div>
+        <!-- ************** END : CONTACT SECTION **************  -->
+    </div>
+
+
+    <!-- COMMON VENDOR SCRIPTS -->
+    <script src="siteassets/vendor/jquery/jquery-3.3.1.min.js"></script>
+    <script src="siteassets/vendor/jquery/jquery-migrate-3.0.0.min.js"></script>
+    <script src="siteassets/vendor/popper/umd/popper.min.js"></script>
+    <script src="siteassets/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="siteassets/vendor/jquery-validation/jquery.validate.min.js"></script>
+    <script src="siteassets/vendor/sweetalert/sweetalert2.min.js"></script>
+    <script src="siteassets/vendor/jarallax/jarallax.min.js"></script>
+    <script src="siteassets/vendor/owlcarousel/owl.carousel.min.js"></script>
+    <script src="siteassets/vendor/swiper/js/swiper.min.js"></script>
+    <script src="siteassets/vendor/jQuery-viewport-checker/jquery.viewportchecker.min.js"></script>
+    <script src="siteassets/vendor/enquire/enquire.min.js"></script>
+    <script src="siteassets/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="siteassets/vendor/isotope/imagesloaded.pkgd.min.js"></script>
+    <script src="siteassets/vendor/isotope/isotope.pkgd.min.js"></script>
+    <script src="siteassets/vendor/isotope/packery-mode.pkgd.min.js"></script>
+
+    <!-- PAGE SPECIFIC VENDOR SCRIPTS -->
+    <script src="siteassets/vendor/particle-animation/particles.min.js"></script>
+    <script src="siteassets/vendor/particle-animation/partical-animation.js"></script>
+
+    <!-- TEMPLATE COMMON SCRIPTS -->
+    <script src="siteassets/minify/ckav_min.js"></script>
+
+    <script>
+        const videoContainer = document.getElementById("video-container");
+        const youtubeVideo = document.getElementById("youtube-video");
+
+        function adjustAspectRatio() {
+            const width = videoContainer.offsetWidth;
+            const height = (width * 9) / 16;
+            youtubeVideo.style.height = `${height}px`;
+            youtubeVideo.style.width = `${width}px`;
+        }
+
+        window.addEventListener("resize", adjustAspectRatio);
+        window.addEventListener("DOMContentLoaded", adjustAspectRatio);
+    </script>
+
+</body>
+
+</html>
